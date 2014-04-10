@@ -32,6 +32,7 @@ Any stylesheet `<link>`s will be resolved relative to `resources/` (e.g.
 ## Cavets
 
 It is entirely possible that complicated CSS rules won't get matched properly.
+Let me know if you have problems and I will do what I can!
 
 ## License
 
