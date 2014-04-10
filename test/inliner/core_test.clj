@@ -1,12 +1,8 @@
-(ns digest.emailer.css-inliner-test
+(ns inliner.core-test
   (:require [clojure.test :refer :all]
             [clojure.string :as string]
             [net.cgrand.enlive-html :as h]
-            [digest.emailer.css-inliner :as inliner]))
-
-(defn strip-whitespace
-  [s]
-  (string/replace s #"\s+" ""))
+            [inliner.core :as inliner]))
 
 (deftest test-inlining-html
   (let [trimmed (fn [& args] (apply str (map string/trim args)))

@@ -1,5 +1,6 @@
-(ns digest.emailer.css-inliner
+(ns inliner.core
   (:require [net.cgrand.enlive-html :as h]
+            [clojure.java.io :as io]
             [clojure.string :refer [join split]]
             [css.core :refer [parse-css]]))
 
@@ -9,7 +10,7 @@
   (let [stylesheets (map (comp :href :attrs)
                          (h/select html [[:link (h/attr= :rel "stylesheet")]]))]
     (concat (mapcat :content (h/select html [:style]))
-            (map #(-> (clojure.lang.RT/baseLoader) (.getResourceAsStream %) slurp) stylesheets))))
+            (map (comp slurp io/resource (partial str ".")) stylesheets))))
 
 (defn op->fn
   "Given a string representing a css attribute operator, given the
